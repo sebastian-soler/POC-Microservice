@@ -1,0 +1,54 @@
+version: '3.4'
+
+services:
+  mscars:
+    image: ${DOCKER_REGISTRY-}mscars
+    build:
+      context: .
+      dockerfile: MSCars/Dockerfile
+    depends_on:
+      - carsdb
+  carsdb:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: 'strong(!)Password'
+      ACCEPT_EULA: "Y"
+
+  mscustomers:
+    image: ${DOCKER_REGISTRY-}mscustomers
+    build:
+      context: .
+      dockerfile: MSCustomers/Dockerfile
+    depends_on:
+      - customerdb
+  customerdb:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: 'strong(!)Password'
+      ACCEPT_EULA: "Y"
+
+  msregistry:
+    image: ${DOCKER_REGISTRY-}msregistry
+    build:
+      context: .
+      dockerfile: MSRegistry/Dockerfile
+    depends_on:
+      - registrydb
+  registrydb:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: 'strong(!)Password'
+      ACCEPT_EULA: "Y"
+
+  msrents:
+    image: ${DOCKER_REGISTRY-}msrents
+    build:
+      context: .
+      dockerfile: MSRents/Dockerfile
+    depends_on:
+      - rentsdb
+  rentsdb:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: 'strong(!)Password'
+      ACCEPT_EULA: "Y"

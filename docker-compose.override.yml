@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  mscars:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=4433
+    ports:
+      - "8083:80"
+      - "4433:443"
+
+  mscustomers:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=4411
+    ports:
+      - "8081:80"
+      - "4411:443"
+
+  msregistry:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=4422
+    ports:
+      - "8082:80"
+      - "4422:443"  
+
+  msrents:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=4400
+    ports:
+      - "8084:80"
+      - "4400:443"
